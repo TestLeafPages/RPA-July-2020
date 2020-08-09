@@ -1,0 +1,99 @@
+Orchaestrator Queues 
+
+Data sharing - Assets and Queue are used
+Queues are used to share the Multi dimension / Bulk transactions 
+
+Insurance Management System :
+=============================
+Criteria :
+
+System has  Multiple levels of Approvals for Transaction
+
+Level 1 :
+
+User 1 collects data for the insurance Claim
+
+Level 2 :
+
+User 2 validates and Process the data collected by the user 1
+and Approves/Rejects for the next level
+
+Implement Process Automation 
+
+Level of Approvals increased from 2 to 4
+
+case 1:
+User 1 mails the collected data
+User 2 validates it
+
+
+Case 2 :
+1) User 1 collects the data and push that to a centrlaized repo
+2) User 2 extracts the data from the repo and process it
+
+
+Centralized Repository -- orchaestrator
+Data for Processing/Transaction --Queue Data
+
+Orchaestrator :
+=================
+Automation menu -->Queues -->Click on Add -->Enter a Queue -->Create Queue
+
+Operations on Queue:
+====================
+1) Data Insertion
+
+Activities:
+==========
+1) Bulk Add Queue Item --> Inserts DataTable into queue,Status of Transaction item status is New after Insertion
+2)Add queue items--have insert data of WIID and Description alone --
+Transaction item status is New after Insertion
+3) Add transaction item--have insert data of WIID and Description alo
+Transaction item status is Inprogress after Insertion
+
+2) Data Retrieval /Fetching the Data From Queue:
+===================================================
+1) No Bulk  Activity to retrieve the Data From the Queue(like data table)
+2) Get Queue Items ---> Collection of Queueitems 
+For each , item.specificcontent("QueueIdentifier") and Status will be 
+"new"
+3) Retrieves single queue item and change the status from new to Inprogress 
+
+3) Process Data:
+====================
+When data/transaction has to be processed in the queue status should be "InProgress"
+Processing the Data  --->Set transaction Status -->Application error,Business Rule exception
+
+
+
+Inserted the Duplicate data in the queue --How it can avoided
+Bulk Queue Items No Unique reference
+
+
+Queue Status :
+==============
+New  ---
+In Progress
+Failed 
+Successful 
+Abandoned  ->within when queue item is not processed 24 hours 
+Retried 
+Deleted 
+Over Due
+
+Login acme --> Invoices menu -->Serach for Invoice -->Display all Invoice 
+
+
+1) Extract All the invoice Data and push it to the queues (Data Insertion)
+2) Retrieve the data from the queue
+3) Data Processing -->Check for the condition Invoice Item equals "Professional Services"  mark it as Success
+
+
+Normal,Deadline - 3rd August
+High, Postpone -5th August 
+
+
+
+
+
+
