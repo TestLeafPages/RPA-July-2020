@@ -1,0 +1,46 @@
+RE Framework
+
+Global Variable:
+
+	1.Transaction Data  -> DataTable
+	2.Transaction Item  -> DataRow / QueueItem / String
+	3.Transaction Number(int)-> process number (no of Data processed -> no of datarow) 
+	4.config
+
+
+1. Init or Initialization
+	- Read Config Data (Data for Stating your Applications)	
+	EX:- UserName, Password , URl, FilePath,Log Message,TimeOut
+	- Start the application
+	Ex:- DataScraping (DataTable) , Read File ,Read DB and etc.
+    Output:
+	on Success 		-> Get Transaction Data
+	on System Exception	-> End Process
+
+2. Get Transaction Data 
+	- Fetch new data for processing 
+	Ex:- DataTable--> DataRow
+    Output:
+	on Success	-> Process Transaction(if new Data is found for processing(Transaction Data))
+	on no Data	-> End process(data not found)
+
+3. Process Transaction
+	- Process the fetched data 
+    Output: 
+	on success 	-> Get Transaction Data (on success of processed the new data)
+	on failure		System Exception	-	Init state
+		Business Rule Exception	- 	Get Transaction Data
+
+
+4. End Process(process clean up)
+	- Close all used application or file 
+	Ex:- logout, close application, File close and etc.
+
+output :
+	no output -> it Final State
+
+
+
+
+
+
